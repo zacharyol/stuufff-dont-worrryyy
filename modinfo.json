@@ -84,7 +84,7 @@
     "author": "iidk",
     "version": "8.2.2",
     "git_path": "iiDk-the-actual/iis.Stupid.Menu",
-    "group": "mod menus",
+    "group": "Mod Menus",
     "download_url": "https://github.com/iiDk-the-actual/iis.Stupid.Menu/releases/download/8.2.2/iis_Stupid_Menu.dll"
   },
   {
@@ -92,7 +92,15 @@
     "author": "zacharyol",
     "version": "1.0.0",
     "git_path": "zacharyol/tung-menu-360-menu-for-gorilla-tag",
-    "group": "mod menus",
+    "group": "Mod Menus",
     "download_url": "https://github.com/zacharyol/tung-menu-360-menu-for-gorilla-tag/releases/download/tungmenurealese/tungmenu360.dll"
+  },
+  {
+    "name": "LibrePad",
+    "author": "iidk",
+    "version": "1.0.0",
+    "git_path": "iiDk-the-actual/LibrePad",
+    "group": "Mod Checker",
+    "download_url": "https://github.com/iiDk-the-actual/LibrePad/releases/download/1.0.0/LibrePad.dll"
   }
 ]
