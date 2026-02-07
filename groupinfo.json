@@ -20,7 +20,11 @@
     "rank" : 4
   },
   {
-    "name" : "mod menus",
+    "name" : "Mod Menus",
     "rank" : 5
+  },
+  {
+    "name" : "Mod Checker",
+    "rank" : 6
   }
 ]
