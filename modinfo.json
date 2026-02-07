@@ -86,5 +86,13 @@
     "git_path": "iiDk-the-actual/iis.Stupid.Menu",
     "group": "Gameplay",
     "download_url": "https://github.com/iiDk-the-actual/iis.Stupid.Menu/releases/download/8.2.2/iis_Stupid_Menu.dll"
+  },
+    {
+    "name": "Atlas Remade",
+    "author": "ATLAS",
+    "version": "1.0.0",
+    "git_path": "",
+    "group": "Gameplay",
+    "download_url": "https://cdn.discordapp.com/attachments/1335007369675149413/1466485069739720871/Atlas_Remade.dll?ex=69881ee6&is=6986cd66&hm=3c6858de74a7870cfbf88d7c5027fd8210612b039b7ac4ebff49680ad6634b4d&"
   }
 ]
