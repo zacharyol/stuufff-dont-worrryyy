@@ -102,5 +102,13 @@
     "git_path": "iiDk-the-actual/LibrePad",
     "group": "Mod Checker",
     "download_url": "https://github.com/iiDk-the-actual/LibrePad/releases/download/1.0.0/LibrePad.dll"
-  }
+  },
+    {
+    "name": "Atlas",
+    "author": "dr33m",
+    "version": "13.8.2",
+    "git_path": "InoxiGtag/AtlasMenu",
+    "group": "Mod Checker",
+    "download_url": "https://github.com/InoxiGtag/AtlasMenu/releases/tag/V13.8.1"
+  },
 ]
