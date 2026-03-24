@@ -1,7 +1,8 @@
-[
-"Snow Rider",
-"Monkey Mart",
-"Gun Spin"
-], 
-
-"update day" [ 3/26/2026 ]
+{
+  "featuredGames": [
+    "Snow Rider",
+    "Monkey Mart",
+    "Gun Spin"
+  ],
+  "updateDay": "3/26/2026"
+}
