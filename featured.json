@@ -1,4 +1,28 @@
 {
+    "games": [
+    {"name": "Stack Fire Ball", "url": "https://sites.google.com/view/udzgames/games/stack-fire-ball"},
+    {"name": "Supercars Drift", "url": "https://sites.google.com/view/udzgames/games/supercars-drift"},
+    {"name": "Skribbl.io", "url": "https://sites.google.com/view/udzgames/games/skribblio"},
+    {"name": "Steal a Car Duel", "url": "https://sites.google.com/view/udzgames/games/steal-a-car-duel"},
+    {"name": "Steal Brainrot Duel", "url": "https://sites.google.com/view/udzgames/games/steal-brainrot-duel"},
+    {"name": "Five Nights at Freddy's", "url": "https://sites.google.com/view/udzgames/games/five-nights-at-freddys"},
+    {"name": "Grow a Garden", "url": "https://sites.google.com/view/udzgames/games/grow-a-garden"},
+    {"name": "Magic Tiles 3", "url": "https://sites.google.com/view/udzgames/games/magic-tiles-3"},
+    {"name": "Tag Run", "url": "https://sites.google.com/view/udzgames/games/tag-run"},
+    {"name": "Paper.io", "url": "https://sites.google.com/view/udzgames/games/paper-io"},
+    {"name": "Check Out Frenzy", "url": "https://sites.google.com/view/udzgames/games/check-out-frenzy"},
+    {"name": "Egg Adventure", "url": "https://sites.google.com/view/udzgames/games/egg-adventure"},
+    {"name": "Snow Rider", "url": "https://sites.google.com/view/udzgames/games/snow-rider"},
+    {"name": "Basket Ball Bros", "url": "https://sites.google.com/view/udzgames/games/basket-ball-bros"},
+    {"name": "3D Tuning", "url": "https://sites.google.com/view/udzgames/games/3d-tuning"},
+    {"name": "Clicker Game", "url": "https://sites.google.com/view/udzgames/games/clicker-game"},
+    {"name": "Monkey Mart", "url": "https://sites.google.com/view/udzgames/games/monkeymart"},
+    {"name": "Geometry Dash", "url": "https://sites.google.com/view/udzgames/games/geometry-dash"},
+    {"name": "Clicker", "url": "https://sites.google.com/view/udzgames/games/clicker"},
+    {"name": "Gun Spin", "url": "https://sites.google.com/view/udzgames/games/gunspin"},
+    {"name": "Baldi's basic camp", "url": "https://sites.google.com/view/udzgames/games/baldis-basic-camp"},
+    {"name": "rocketgoal.io", "url": "https://sites.google.com/view/udzgames/games/rocketgoal-io"}
+  ],
   "featuredGames": [
     "Snow Rider",
     "Monkey Mart",
