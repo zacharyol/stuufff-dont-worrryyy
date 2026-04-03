@@ -2,41 +2,57 @@ local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
 local PlayerGui = LocalPlayer:WaitForChild("PlayerGui")
 
+-- Constants
+local COLORS = {
+    bg = Color3.fromRGB(40, 40, 40),
+    btn = Color3.fromRGB(60, 60, 60),
+    btnHover = Color3.fromRGB(70, 70, 70),
+    panel = Color3.fromRGB(50, 50, 50),
+    active = Color3.fromRGB(60, 170, 60),
+    danger = Color3.fromRGB(200, 60, 60),
+    white = Color3.fromRGB(255, 255, 255)
+}
+local SIZES = {frameW = 360, frameH = 460, titleH = 36, btnH = 34, margin = 20}
+
+-- Create ScreenGui
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "BrainrotFinderGUI"
 screenGui.ResetOnSpawn = false
 screenGui.Parent = PlayerGui
 screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Global
 
+-- Main Frame
 local mainFrame = Instance.new("Frame")
 mainFrame.Name = "MainFrame"
-mainFrame.Size = UDim2.new(0, 360, 0, 460)
-mainFrame.Position = UDim2.new(0.5, -180, 0.5, -230)
-mainFrame.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
+mainFrame.Size = UDim2.new(0, SIZES.frameW, 0, SIZES.frameH)
+mainFrame.Position = UDim2.new(0.5, -SIZES.frameW/2, 0.5, -SIZES.frameH/2)
+mainFrame.BackgroundColor3 = COLORS.bg
 mainFrame.BorderSizePixel = 0
 mainFrame.Active = true
 mainFrame.Draggable = true
 mainFrame.ClipsDescendants = false
 mainFrame.Parent = screenGui
 
+-- Title Label
 local titleLabel = Instance.new("TextLabel")
 titleLabel.Name = "TitleLabel"
-titleLabel.Size = UDim2.new(1, 0, 0, 36)
+titleLabel.Size = UDim2.new(1, 0, 0, SIZES.titleH)
 titleLabel.BackgroundTransparency = 1
 titleLabel.Text = "Brainrot Finder"
-titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+titleLabel.TextColor3 = COLORS.white
 titleLabel.Font = Enum.Font.SourceSansBold
 titleLabel.TextScaled = true
 titleLabel.Parent = mainFrame
 
+-- Minimize Button
 local minButton = Instance.new("TextButton")
 minButton.Name = "MinButton"
 minButton.Size = UDim2.new(0, 28, 0, 28)
 minButton.AnchorPoint = Vector2.new(1, 0)
 minButton.Position = UDim2.new(1, -6, 0, 4)
-minButton.BackgroundColor3 = Color3.fromRGB(80, 80, 80)
+minButton.BackgroundColor3 = COLORS.btnHover
 minButton.Text = "-"
-minButton.TextColor3 = Color3.fromRGB(255, 255, 255)
+minButton.TextColor3 = COLORS.white
 minButton.Font = Enum.Font.SourceSansBold
 minButton.TextScaled = true
 minButton.ZIndex = 10
@@ -67,55 +83,37 @@ minButton.MouseButton1Click:Connect(function()
     end
 end)
 
-local refreshButton = Instance.new("TextButton")
-refreshButton.Name = "RefreshButton"
-refreshButton.Size = UDim2.new(1, -40, 0, 34)
-refreshButton.Position = UDim2.new(0, 20, 0, 50)
-refreshButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-refreshButton.Text = "Refresh"
-refreshButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-refreshButton.Font = Enum.Font.SourceSansBold
-refreshButton.TextScaled = true
+-- Helper to create buttons
+local function createButton(name, text, color, position)
+    local btn = Instance.new("TextButton")
+    btn.Name = name
+    btn.Size = UDim2.new(1, -SIZES.margin*2, 0, SIZES.btnH)
+    btn.Position = UDim2.new(0, SIZES.margin, 0, position)
+    btn.BackgroundColor3 = color
+    btn.Text = text
+    btn.TextColor3 = COLORS.white
+    btn.Font = Enum.Font.SourceSansBold
+    btn.TextScaled = true
+    return btn
+end
+
+local refreshButton = createButton("RefreshButton", "Refresh", COLORS.btn, 50)
 refreshButton.Parent = mainFrame
 
-local autoButton = Instance.new("TextButton")
-autoButton.Name = "AutoButton"
-autoButton.Size = UDim2.new(1, -40, 0, 34)
-autoButton.Position = UDim2.new(0, 20, 0, 176)
-autoButton.BackgroundColor3 = Color3.fromRGB(200, 60, 60)
-autoButton.Text = "Auto Grab: OFF"
-autoButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-autoButton.Font = Enum.Font.SourceSansBold
-autoButton.TextScaled = true
-autoButton.Parent = mainFrame
-
-local rankButton = Instance.new("TextButton")
-rankButton.Name = "RankButton"
-rankButton.Size = UDim2.new(1, -40, 0, 34)
-rankButton.Position = UDim2.new(0, 20, 0, 92)
-rankButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-rankButton.Text = "Ranks: All"
-rankButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-rankButton.Font = Enum.Font.SourceSansBold
-rankButton.TextScaled = true
+local rankButton = createButton("RankButton", "Ranks: All", COLORS.btn, 92)
 rankButton.Parent = mainFrame
 
-local rarityButton = Instance.new("TextButton")
-rarityButton.Name = "RarityButton"
-rarityButton.Size = UDim2.new(1, -40, 0, 34)
-rarityButton.Position = UDim2.new(0, 20, 0, 134)
-rarityButton.BackgroundColor3 = Color3.fromRGB(60, 60, 60)
-rarityButton.Text = "Rarities: All"
-rarityButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-rarityButton.Font = Enum.Font.SourceSansBold
-rarityButton.TextScaled = true
+local rarityButton = createButton("RarityButton", "Rarities: All", COLORS.btn, 134)
 rarityButton.Parent = mainFrame
+
+local autoButton = createButton("AutoButton", "Auto Grab: OFF", COLORS.danger, 176)
+autoButton.Parent = mainFrame
 
 local rankDrop = Instance.new("ScrollingFrame")
 rankDrop.Name = "RankDrop"
 rankDrop.Size = UDim2.new(1, -40, 0, 180)
 rankDrop.Position = UDim2.new(0, 20, 0, 126)
-rankDrop.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+rankDrop.BackgroundColor3 = COLORS.panel
 rankDrop.BorderSizePixel = 0
 rankDrop.ScrollBarThickness = 6
 rankDrop.Visible = false
@@ -132,7 +130,7 @@ local rarityDrop = Instance.new("ScrollingFrame")
 rarityDrop.Name = "RarityDrop"
 rarityDrop.Size = UDim2.new(1, -40, 0, 180)
 rarityDrop.Position = UDim2.new(0, 20, 0, 168)
-rarityDrop.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+rarityDrop.BackgroundColor3 = COLORS.panel
 rarityDrop.BorderSizePixel = 0
 rarityDrop.ScrollBarThickness = 6
 rarityDrop.Visible = false
@@ -145,35 +143,29 @@ rarityLayout.Padding = UDim.new(0, 4)
 rarityLayout.FillDirection = Enum.FillDirection.Vertical
 rarityLayout.SortOrder = Enum.SortOrder.LayoutOrder
 
+-- Selection state
 local selectedRanks = {}
-local function selectedRanksCount()
-    local c = 0
-    for _, v in pairs(selectedRanks) do
-        if v then c += 1 end
-    end
-    return c
-end
-local function updateRankButtonText()
+local selectedRarities = {}
+
+-- Update button text for selections
+local function formatSelectionText(prefix, selectedTable)
     local names = {}
-    for k, v in pairs(selectedRanks) do
-        if v then
-            table.insert(names, k)
-        end
+    for k, v in pairs(selectedTable) do
+        if v then table.insert(names, k) end
     end
     table.sort(names, function(a, b) return a:lower() < b:lower() end)
-    if #names == 0 then
-        rankButton.Text = "Ranks: All"
-        return
-    end
-    if #names == 1 then
-        rankButton.Text = "Ranks: " .. names[1]
-        return
-    end
-    if #names == 2 then
-        rankButton.Text = "Ranks: " .. names[1] .. ", " .. names[2]
-        return
-    end
-    rankButton.Text = "Ranks: " .. names[1] .. ", " .. names[2] .. " +" .. tostring(#names - 2)
+    if #names == 0 then return prefix .. ": All" end
+    if #names == 1 then return prefix .. ": " .. names[1] end
+    if #names == 2 then return prefix .. ": " .. names[1] .. ", " .. names[2] end
+    return prefix .. ": " .. names[1] .. ", " .. names[2] .. " +" .. tostring(#names - 2)
+end
+
+local function updateRankButtonText()
+    rankButton.Text = formatSelectionText("Ranks", selectedRanks)
+end
+
+local function updateRarityButtonText()
+    rarityButton.Text = formatSelectionText("Rarities", selectedRarities)
 end
 local function clearRankDrop()
     for _, c in ipairs(rankDrop:GetChildren()) do
@@ -233,15 +225,15 @@ local function rebuildRankDrop()
     for _, r in ipairs(arr) do
         local b = Instance.new("TextButton")
         b.Size = UDim2.new(1, -8, 0, 28)
-        b.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-        b.TextColor3 = Color3.fromRGB(255, 255, 255)
+        b.BackgroundColor3 = COLORS.btnHover
+        b.TextColor3 = COLORS.white
         b.Font = Enum.Font.SourceSans
         b.TextScaled = true
         b.Text = r == "All" and "All (clear)" or r
         b.Parent = rankDrop
         b.ZIndex = 101
         if r ~= "All" and selectedRanks[r] then
-            b.BackgroundColor3 = Color3.fromRGB(60, 170, 60)
+            b.BackgroundColor3 = COLORS.active
         end
         b.MouseButton1Click:Connect(function()
             if r == "All" then
@@ -253,11 +245,7 @@ local function rebuildRankDrop()
                 rankDrop.Visible = false
             else
                 selectedRanks[r] = not selectedRanks[r]
-                if selectedRanks[r] then
-                    b.BackgroundColor3 = Color3.fromRGB(60, 170, 60)
-                else
-                    b.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-                end
+                b.BackgroundColor3 = selectedRanks[r] and COLORS.active or COLORS.btnHover
                 updateRankButtonText()
                 rebuild()
             end
@@ -277,29 +265,49 @@ rankButton.MouseButton1Click:Connect(function()
     end
 end)
 
-local selectedRarities = {}
-local function updateRarityButtonText()
-    local names = {}
-    for k, v in pairs(selectedRarities) do
-        if v then table.insert(names, k) end
+-- Removed duplicate: selectedRarities and updateRarityButtonText now defined earlier
+
+-- Helper to extract text from model descendants
+local function findTextInDescendants(model, keywords)
+    for _, d in ipairs(model:GetDescendants()) do
+        local n = d.Name:lower()
+        if d:IsA("StringValue") then
+            for _, kw in ipairs(keywords) do
+                if n:find(kw) and d.Value and #d.Value > 0 then
+                    return d.Value
+                end
+            end
+        elseif (d:IsA("TextLabel") or d:IsA("TextBox")) then
+            for _, kw in ipairs(keywords) do
+                if n:find(kw) or n == "text" then
+                    if d.Text and #d.Text > 0 then
+                        return d.Text
+                    end
+                end
+            end
+        end
     end
-    table.sort(names, function(a, b) return a:lower() < b:lower() end)
-    if #names == 0 then
-        rarityButton.Text = "Rarities: All"
-        return
+    -- Check GUIs
+    for _, d in ipairs(model:GetDescendants()) do
+        if d:IsA("BillboardGui") or d:IsA("SurfaceGui") then
+            for _, c in ipairs(d:GetDescendants()) do
+                if c:IsA("TextLabel") and c.Text and #c.Text > 0 then
+                    return c.Text
+                end
+            end
+        end
     end
-    if #names == 1 then
-        rarityButton.Text = "Rarities: " .. names[1]
-        return
-    end
-    if #names == 2 then
-        rarityButton.Text = "Rarities: " .. names[1] .. ", " .. names[2]
-        return
-    end
-    rarityButton.Text = "Rarities: " .. names[1] .. ", " .. names[2] .. " +" .. tostring(#names - 2)
+    return "?"
+end
+
+local function getRankText(model)
+    return findTextInDescendants(model, {"rank", "tier"})
 end
 
 local function getRarityText(model)
+    local result = findTextInDescendants(model, {"rarity"})
+    if result ~= "?" then return result end
+    -- Fallback: check for rarity in text fields
     for _, d in ipairs(model:GetDescendants()) do
         local n = d.Name:lower()
         if d:IsA("StringValue") and n:find("rarity") and d.Value and #d.Value > 0 then
@@ -308,15 +316,6 @@ local function getRarityText(model)
         if (d:IsA("TextLabel") or d:IsA("TextBox")) and (n:find("rarity") or n == "text") then
             if d.Text and #d.Text > 0 then
                 return d.Text
-            end
-        end
-    end
-    for _, d in ipairs(model:GetDescendants()) do
-        if d:IsA("BillboardGui") or d:IsA("SurfaceGui") then
-            for _, c in ipairs(d:GetDescendants()) do
-                if c:IsA("TextLabel") and c.Text and #c.Text > 0 then
-                    return c.Text
-                end
             end
         end
     end
@@ -399,7 +398,7 @@ local list = Instance.new("ScrollingFrame")
 list.Name = "BrainrotList"
 list.Size = UDim2.new(1, -40, 0, 260)
 list.Position = UDim2.new(0, 20, 0, 218)
-list.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
+list.BackgroundColor3 = COLORS.panel
 list.BorderSizePixel = 0
 list.ScrollBarThickness = 6
 list.Parent = mainFrame
@@ -410,29 +409,7 @@ layout.Padding = UDim.new(0, 6)
 layout.FillDirection = Enum.FillDirection.Vertical
 layout.SortOrder = Enum.SortOrder.LayoutOrder
 
-local function getRankText(model)
-    for _, d in ipairs(model:GetDescendants()) do
-        local n = d.Name:lower()
-        if d:IsA("StringValue") and (n:find("rank") or n:find("tier")) and d.Value and #d.Value > 0 then
-            return d.Value
-        end
-        if (d:IsA("TextLabel") or d:IsA("TextBox")) and (n:find("rank") or n:find("tier") or n == "text") then
-            if d.Text and #d.Text > 0 then
-                return d.Text
-            end
-        end
-    end
-    for _, d in ipairs(model:GetDescendants()) do
-        if d:IsA("BillboardGui") or d:IsA("SurfaceGui") then
-            for _, c in ipairs(d:GetDescendants()) do
-                if c:IsA("TextLabel") and c.Text and #c.Text > 0 then
-                    return c.Text
-                end
-            end
-        end
-    end
-    return "?"
-end
+-- Removed duplicate getRankText (already defined earlier using findTextInDescendants)
 
 local function getHitboxPart(model)
     local cand = {}
@@ -540,52 +517,29 @@ local function clearList()
     end
 end
 
-local function matchRank(txt)
-    local t = tostring(txt or "")
-    t = string.lower(t)
-    local anySelected = false
-    for _, v in pairs(selectedRanks) do
+-- Check if item matches selected filters
+local function matchesFilter(txt, selectedTable)
+    local t = tostring(txt or ""):lower()
+    -- If nothing selected, match all
+    for _, v in pairs(selectedTable) do
         if v then
-            anySelected = true
-            break
-        end
-    end
-    if not anySelected then
-        return true
-    end
-    for k, v in pairs(selectedRanks) do
-        if v then
-            local s = string.lower(k)
-            if string.find(t, s, 1, true) ~= nil then
-                return true
+            for k, sel in pairs(selectedTable) do
+                if sel and t:find(k:lower(), 1, true) then
+                    return true
+                end
             end
+            return false
         end
     end
-    return false
+    return true
+end
+
+local function matchRank(txt)
+    return matchesFilter(txt, selectedRanks)
 end
 
 local function matchRarity(txt)
-    local t = tostring(txt or "")
-    t = string.lower(t)
-    local anySelected = false
-    for _, v in pairs(selectedRarities) do
-        if v then
-            anySelected = true
-            break
-        end
-    end
-    if not anySelected then
-        return true
-    end
-    for k, v in pairs(selectedRarities) do
-        if v then
-            local s = string.lower(k)
-            if string.find(t, s, 1, true) ~= nil then
-                return true
-            end
-        end
-    end
-    return false
+    return matchesFilter(txt, selectedRarities)
 end
 
 function rebuild()
