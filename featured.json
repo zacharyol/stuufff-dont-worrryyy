@@ -21,11 +21,12 @@
     {"name": "Clicker", "url": "https://sites.google.com/view/udzgames/games/clicker"},
     {"name": "Gun Spin", "url": "https://sites.google.com/view/udzgames/games/gunspin"},
     {"name": "Baldi's basic camp", "url": "https://sites.google.com/view/udzgames/games/baldis-basic-camp"},
-    {"name": "rocketgoal.io", "url": "https://sites.google.com/view/udzgames/games/rocketgoal-io"}
+    {"name": "rocketgoal.io", "url": "https://sites.google.com/view/udzgames/games/rocketgoal-io"},
+    {"name": "WE BECOME WHAT WE BEHOLD", "url": "https://sites.google.com/view/udzgames/games/we-become-what-we-behold"}
   ],
   "featuredGames": [
     "Snow Rider",
-    "Monkey Mart",
+    "WE BECOME WHAT WE BEHOLD",
     "Gun Spin"
   ],
   "updateDay": "5/16/2026"
